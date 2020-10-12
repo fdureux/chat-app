@@ -4,18 +4,28 @@ import PropTypes from 'prop-types'
 
 
 
-function Contact({name, avatar, online}) {
-    return ( <div className="Contact">
-        <img className="avatar" src={avatar} alt='profile'/>
-        <div className="status">
-            <div className="name">{name}</div>
-            <div className="status">
-                {online ? <div className="status-online" /> : <div className="status-offline"></div> } 
-                <div className="status-text">{online ? 'Online' : 'Offline'} </div>
+class Contact extends React.Component {
+    constructor(props) {
+    super(props)
+    this.state = {
+        online: props.online,
+    };
+    }
+    render() {
+        return ( <div className="Contact">
+            <img className="avatar" src={this.props.avatar} alt='profile'/>
+            <div>
+                <div className="name">{this.props.name}</div>
+                <div className="status" onClick = {event => {const newOnline = !this.state.online;
+                this.setState({online : newOnline}); }}>
+                    {this.state.online ? <div className="status-online" /> : <div className="status-offline"></div> } 
+                    <div className="status-text">{this.state.online ? 'Online' : 'Offline'} </div>
+                </div>
+                </div>
             </div>
-            </div>
-        </div>
-    );
+        );
+    }
+     
 }
  
 Contact.propTypes = {
