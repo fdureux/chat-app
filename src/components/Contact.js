@@ -4,14 +4,14 @@ import PropTypes from 'prop-types'
 
 
 
-function Contact(props) {
+function Contact({name, avatar, online}) {
     return ( <div className="Contact">
-        <img className="avatar" src={props.avatar} alt='profile'/>
-        <div>
-            <div className="name">{props.name}</div>
+        <img className="avatar" src={avatar} alt='profile'/>
+        <div className="status">
+            <div className="name">{name}</div>
             <div className="status">
-                {props.online ? <div className="status-online"></div>: <div className="status-offline"></div> } 
-                <div className="status-text">{props.online? 'Online' : 'Offline'} </div>
+                {online ? <div className="status-online" /> : <div className="status-offline"></div> } 
+                <div className="status-text">{online ? 'Online' : 'Offline'} </div>
             </div>
             </div>
         </div>
@@ -25,3 +25,4 @@ Contact.propTypes = {
   };
 
 export default Contact;
+
